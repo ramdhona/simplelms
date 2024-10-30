@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Halaman Statistik</title>
+    <!-- Tambahkan CSS Bootstrap -->
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background-color: #114d91; /* Warna latar belakang */
+        color: white; /* Warna teks default */
+      }
+      .container {
+        margin-top: 50px;
+      }
+      .card {
+        margin-bottom: 20px; /* Jarak antar kartu */
+        border-radius: 15px; /* Menambahkan border radius */
+      }
+      h1 {
+        color: white; /* Warna teks untuk judul */
+      }
+      .card-body {
+        color: black; /* Warna teks dalam kartu diubah menjadi hitam */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="text-center">Halaman Statistik</h1>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Jumlah Pengguna: {{ total_users }}</h5>
+          <p class="card-text">
+            Jumlah Pengguna Tanpa Kursus: {{ total_users_without_courses }}
+          </p>
+          <p class="card-text">
+            Rata-rata Kursus per Pengguna: {{ average_courses_per_user }}
+          </p>
+          <p class="card-text">
+            Pengguna dengan Kursus Terbanyak: {{ most_courses_user.username if
+            most_courses_user else 'Tidak Ada Pengguna' }}
+          </p>
+          <h5>Pengguna Tanpa Kursus:</h5>
+          <ul>
+            {% for user in users_without_courses %}
+            <li>{{ user.username }}</li>
+            {% empty %}
+            <li>Tidak Ada Pengguna Tanpa Kursus</li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- Tambahkan JS Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>
